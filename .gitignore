@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ExamsGenerator/ExamsGenerator/bin
+/ExamsGenerator/ExamsGenerator/obj/Debug
+/ExamsGenerator/.vs
+/ExamsGenerator/packages
+/ExamsGenerator/ExamsGenerator/ApplicationInsights.config
+/ExamsGenerator/ExamsGenerator/ExamsGenerator.csproj.user
