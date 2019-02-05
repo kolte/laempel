@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3c07f1739780468588b6a91c04b87355" Name="Diagram1">
+        <EntityTypeShape EntityType="ExamsModel.Answer" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.AnswerToQuestion" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.Class" Width="1.5" PointX="3.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.DegreeOfDifficulty" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.DegreeOfDifficultyToLevel" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.DegreeOfDifficultyToLevelOfEducation" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.EducationSystem" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamCandidateHeader" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamCandidateLine" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamCompositionLine" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamDeliveryHeader" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamDeliveryLine" Width="1.5" PointX="11.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamOrder" Width="1.5" PointX="6" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamOrderItem" Width="1.5" PointX="11.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamOrderShuffleHeader" Width="1.5" PointX="8.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamOrderShuffleLine" Width="1.5" PointX="11.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamOrderStatu" Width="1.5" PointX="6" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamOrderStatusLog" Width="1.5" PointX="8.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.ExamStatu" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.Institute" Width="1.5" PointX="1.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.Language" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.LevelOfEducationInternational" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.LevelOfEducationLocal" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.Question" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.QuestionToSubject" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.QuestionType" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.Role" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.Subject" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.User" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.vwCandidateExamHeader" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamsModel.vwExamResult" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ExamsModel.FK_AnswerToQuestion_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamDeliveryLine_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrderShuffleLine_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_AnswerToQuestion_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Class_Institute" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Class_LevelOfEducationInternational" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrder_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty1" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrder_DegreeOfDifficulty" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Question_DegreeOfDifficulty" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_DegreeOfDifficultyToLevelOfEducation_LevelOfEducation" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCandidateHeader_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCandidateHeader_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCandidateLine_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCandidateLine_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCandidateLine_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamDeliveryLine_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamDeliveryLine_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCompositionItem_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrder_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrder_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrderShuffleHeader_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrderShuffleLine_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrderStatusLog_ExamOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamCompositionItem_QuestionType" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrderShuffleLine_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_ExamOrderStatusLog_ExamOrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Question_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Question_LevelOfEducationInternational" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Question_QuestionType" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_Question_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamsModel.FK_QuestionToSubject_Subject" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

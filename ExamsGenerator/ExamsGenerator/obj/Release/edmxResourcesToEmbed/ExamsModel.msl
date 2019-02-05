@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExamsModelStoreContainer" CdmEntityContainer="ExamsEntities">
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="ExamsModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnswerToQuestions">
+      <EntityTypeMapping TypeName="ExamsModel.AnswerToQuestion">
+        <MappingFragment StoreEntitySet="AnswerToQuestion">
+          <ScalarProperty Name="AnswerToQuestionID" ColumnName="AnswerToQuestionID" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="ExamsModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+          <ScalarProperty Name="LevelOfEducationInternationalID" ColumnName="LevelOfEducationInternationalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DegreeOfDifficulties">
+      <EntityTypeMapping TypeName="ExamsModel.DegreeOfDifficulty">
+        <MappingFragment StoreEntitySet="DegreeOfDifficulty">
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DegreeOfDifficultyToLevels">
+      <EntityTypeMapping TypeName="ExamsModel.DegreeOfDifficultyToLevel">
+        <MappingFragment StoreEntitySet="DegreeOfDifficultyToLevel">
+          <ScalarProperty Name="DegreeOfDifficultyToLevelOfEductionID" ColumnName="DegreeOfDifficultyToLevelOfEductionID" />
+          <ScalarProperty Name="DegreeIDFrom" ColumnName="DegreeIDFrom" />
+          <ScalarProperty Name="DegreeIDTo" ColumnName="DegreeIDTo" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DegreeOfDifficultyToLevelOfEducations">
+      <EntityTypeMapping TypeName="ExamsModel.DegreeOfDifficultyToLevelOfEducation">
+        <MappingFragment StoreEntitySet="DegreeOfDifficultyToLevelOfEducation">
+          <ScalarProperty Name="DegreeOfDifficultyToLevelOfEduction" ColumnName="DegreeOfDifficultyToLevelOfEduction" />
+          <ScalarProperty Name="DegreeIDFrom" ColumnName="DegreeIDFrom" />
+          <ScalarProperty Name="DegreeIDTo" ColumnName="DegreeIDTo" />
+          <ScalarProperty Name="LevelOfEductionID" ColumnName="LevelOfEductionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EducationSystems">
+      <EntityTypeMapping TypeName="ExamsModel.EducationSystem">
+        <MappingFragment StoreEntitySet="EducationSystem">
+          <ScalarProperty Name="EducationSystemID" ColumnName="EducationSystemID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamCandidateHeaders">
+      <EntityTypeMapping TypeName="ExamsModel.ExamCandidateHeader">
+        <MappingFragment StoreEntitySet="ExamCandidateHeader">
+          <ScalarProperty Name="ExamCandidateHeaderID" ColumnName="ExamCandidateHeaderID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+          <ScalarProperty Name="EvaluationDate" ColumnName="EvaluationDate" />
+          <ScalarProperty Name="PointsScored" ColumnName="PointsScored" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamCandidateLines">
+      <EntityTypeMapping TypeName="ExamsModel.ExamCandidateLine">
+        <MappingFragment StoreEntitySet="ExamCandidateLine">
+          <ScalarProperty Name="ExamCanditateLineID" ColumnName="ExamCanditateLineID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamCompositionLines">
+      <EntityTypeMapping TypeName="ExamsModel.ExamCompositionLine">
+        <MappingFragment StoreEntitySet="ExamCompositionLine">
+          <ScalarProperty Name="ExamCompositionLineID" ColumnName="ExamCompositionLineID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="PositionNr" ColumnName="PositionNr" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="AnswerToQuestionID" ColumnName="AnswerToQuestionID" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="SortVersionID" ColumnName="SortVersionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamDeliveryHeaders">
+      <EntityTypeMapping TypeName="ExamsModel.ExamDeliveryHeader">
+        <MappingFragment StoreEntitySet="ExamDeliveryHeader">
+          <ScalarProperty Name="ExamDeliveryHeaderID" ColumnName="ExamDeliveryHeaderID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="NumberOfQuestions" ColumnName="NumberOfQuestions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamDeliveryLines">
+      <EntityTypeMapping TypeName="ExamsModel.ExamDeliveryLine">
+        <MappingFragment StoreEntitySet="ExamDeliveryLine">
+          <ScalarProperty Name="ExamDeliveryLineID" ColumnName="ExamDeliveryLineID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamOrders">
+      <EntityTypeMapping TypeName="ExamsModel.ExamOrder">
+        <MappingFragment StoreEntitySet="ExamOrder">
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Disclaimer" ColumnName="Disclaimer" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="NumberOfSortVersions" ColumnName="NumberOfSortVersions" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamOrderItems">
+      <EntityTypeMapping TypeName="ExamsModel.ExamOrderItem">
+        <MappingFragment StoreEntitySet="ExamOrderItem">
+          <ScalarProperty Name="ExamOrderItemID" ColumnName="ExamOrderItemID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+          <ScalarProperty Name="NumberOfQuestions" ColumnName="NumberOfQuestions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamOrderShuffleHeaders">
+      <EntityTypeMapping TypeName="ExamsModel.ExamOrderShuffleHeader">
+        <MappingFragment StoreEntitySet="ExamOrderShuffleHeader">
+          <ScalarProperty Name="ExamOrderShuffleHeaderID" ColumnName="ExamOrderShuffleHeaderID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="ExamOrderShuffleID" ColumnName="ExamOrderShuffleID" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="NumberOfQuestions" ColumnName="NumberOfQuestions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamOrderShuffleLines">
+      <EntityTypeMapping TypeName="ExamsModel.ExamOrderShuffleLine">
+        <MappingFragment StoreEntitySet="ExamOrderShuffleLine">
+          <ScalarProperty Name="ExamOrderShuffleLineID" ColumnName="ExamOrderShuffleLineID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="ExamOrderShuffleID" ColumnName="ExamOrderShuffleID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamOrderStatus">
+      <EntityTypeMapping TypeName="ExamsModel.ExamOrderStatu">
+        <MappingFragment StoreEntitySet="ExamOrderStatus">
+          <ScalarProperty Name="ExamOrderStatusID" ColumnName="ExamOrderStatusID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamOrderStatusLogs">
+      <EntityTypeMapping TypeName="ExamsModel.ExamOrderStatusLog">
+        <MappingFragment StoreEntitySet="ExamOrderStatusLog">
+          <ScalarProperty Name="ExamOrderStatusLogID" ColumnName="ExamOrderStatusLogID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ExamOrderStatusID" ColumnName="ExamOrderStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamStatus">
+      <EntityTypeMapping TypeName="ExamsModel.ExamStatu">
+        <MappingFragment StoreEntitySet="ExamStatus">
+          <ScalarProperty Name="ExamStatusID" ColumnName="ExamStatusID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Institutes">
+      <EntityTypeMapping TypeName="ExamsModel.Institute">
+        <MappingFragment StoreEntitySet="Institute">
+          <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="ExamsModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="Language1" ColumnName="Language" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LevelOfEducationInternationals">
+      <EntityTypeMapping TypeName="ExamsModel.LevelOfEducationInternational">
+        <MappingFragment StoreEntitySet="LevelOfEducationInternational">
+          <ScalarProperty Name="LevelOfEducationInternationalID" ColumnName="LevelOfEducationInternationalID" />
+          <ScalarProperty Name="ISCEDCode" ColumnName="ISCEDCode" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LevelOfEducationLocals">
+      <EntityTypeMapping TypeName="ExamsModel.LevelOfEducationLocal">
+        <MappingFragment StoreEntitySet="LevelOfEducationLocal">
+          <ScalarProperty Name="LevelOfEductionLocal" ColumnName="LevelOfEductionLocal" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="ExamsModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+          <ScalarProperty Name="LevelOfEducationInternationalID" ColumnName="LevelOfEducationInternationalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionToSubjects">
+      <EntityTypeMapping TypeName="ExamsModel.QuestionToSubject">
+        <MappingFragment StoreEntitySet="QuestionToSubject">
+          <ScalarProperty Name="QuestionToSubjectID" ColumnName="QuestionToSubjectID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionTypes">
+      <EntityTypeMapping TypeName="ExamsModel.QuestionType">
+        <MappingFragment StoreEntitySet="QuestionType">
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="ExamsModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="ExamsModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ExamsModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwCandidateExamHeaders">
+      <EntityTypeMapping TypeName="ExamsModel.vwCandidateExamHeader">
+        <MappingFragment StoreEntitySet="vwCandidateExamHeader">
+          <ScalarProperty Name="ExamCandidateHeaderID" ColumnName="ExamCandidateHeaderID" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+          <ScalarProperty Name="EvaluationDate" ColumnName="EvaluationDate" />
+          <ScalarProperty Name="PointsScored" ColumnName="PointsScored" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Disclaimer" ColumnName="Disclaimer" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="NumberOfSortVersions" ColumnName="NumberOfSortVersions" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ExamStatusID" ColumnName="ExamStatusID" />
+          <ScalarProperty Name="Expr5" ColumnName="Expr5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwExamResults">
+      <EntityTypeMapping TypeName="ExamsModel.vwExamResult">
+        <MappingFragment StoreEntitySet="vwExamResult">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="DifficultyExam" ColumnName="DifficultyExam" />
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="DifficultyQuestion" ColumnName="DifficultyQuestion" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Value_correct" ColumnName="Value correct" />
+          <ScalarProperty Name="AnswersGiven" ColumnName="AnswersGiven" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_AssignExamToCandidate" FunctionName="ExamsModel.Store.usp_AssignExamToCandidate" />
+    <FunctionImportMapping FunctionImportName="usp_CreateExamDeliveryFromShuffle" FunctionName="ExamsModel.Store.usp_CreateExamDeliveryFromShuffle" />
+    <FunctionImportMapping FunctionImportName="usp_CreateExamShuffle" FunctionName="ExamsModel.Store.usp_CreateExamShuffle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ExamsModel.usp_CreateExamShuffle_Result">
+          <ScalarProperty Name="ExamOrderID" ColumnName="ExamOrderID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Disclaimer" ColumnName="Disclaimer" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="NumberOfSortVersions" ColumnName="NumberOfSortVersions" />
+          <ScalarProperty Name="DegreeOfDifficultyID" ColumnName="DegreeOfDifficultyID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

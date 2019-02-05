@@ -1,0 +1,964 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="AnswerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="LanguageID" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="AnswerToQuestion">
+    <Key>
+      <PropertyRef Name="AnswerToQuestionID" />
+    </Key>
+    <Property Name="AnswerToQuestionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnswerID" Type="bigint" Nullable="false" />
+    <Property Name="QuestionID" Type="bigint" Nullable="false" />
+    <Property Name="Value" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="InstituteID" Type="int" />
+    <Property Name="LevelOfEducationInternationalID" Type="int" />
+  </EntityType>
+  <EntityType Name="DegreeOfDifficulty">
+    <Key>
+      <PropertyRef Name="DegreeOfDifficultyID" />
+    </Key>
+    <Property Name="DegreeOfDifficultyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DegreeOfDifficultyToLevel">
+    <Key>
+      <PropertyRef Name="DegreeOfDifficultyToLevelOfEductionID" />
+    </Key>
+    <Property Name="DegreeOfDifficultyToLevelOfEductionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DegreeIDFrom" Type="int" />
+    <Property Name="DegreeIDTo" Type="int" />
+    <Property Name="LevelID" Type="int" />
+  </EntityType>
+  <EntityType Name="DegreeOfDifficultyToLevelOfEducation">
+    <Key>
+      <PropertyRef Name="DegreeOfDifficultyToLevelOfEduction" />
+    </Key>
+    <Property Name="DegreeOfDifficultyToLevelOfEduction" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DegreeIDFrom" Type="int" />
+    <Property Name="DegreeIDTo" Type="int" />
+    <Property Name="LevelOfEductionID" Type="int" />
+  </EntityType>
+  <EntityType Name="EducationSystem">
+    <Key>
+      <PropertyRef Name="EducationSystemID" />
+    </Key>
+    <Property Name="EducationSystemID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ExamCandidateHeader">
+    <Key>
+      <PropertyRef Name="ExamCandidateHeaderID" />
+    </Key>
+    <Property Name="ExamCandidateHeaderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="SubmitDate" Type="date" />
+    <Property Name="EvaluationDate" Type="date" />
+    <Property Name="PointsScored" Type="int" />
+    <Property Name="CreateDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ExamCandidateLine">
+    <Key>
+      <PropertyRef Name="ExamCanditateLineID" />
+    </Key>
+    <Property Name="ExamCanditateLineID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="QuestionID" Type="bigint" />
+    <Property Name="AnswerID" Type="bigint" />
+    <Property Name="Value" Type="bit" />
+  </EntityType>
+  <EntityType Name="ExamCompositionLine">
+    <Key>
+      <PropertyRef Name="ExamCompositionLineID" />
+    </Key>
+    <Property Name="ExamCompositionLineID" Type="bigint" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="PositionNr" Type="int" />
+    <Property Name="QuestionID" Type="bigint" />
+    <Property Name="Question" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AnswerToQuestionID" Type="bigint" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Value" Type="bit" />
+    <Property Name="SortVersionID" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamDeliveryHeader">
+    <Key>
+      <PropertyRef Name="ExamDeliveryHeaderID" />
+    </Key>
+    <Property Name="ExamDeliveryHeaderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="NumberOfQuestions" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamDeliveryLine">
+    <Key>
+      <PropertyRef Name="ExamDeliveryLineID" />
+    </Key>
+    <Property Name="ExamDeliveryLineID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+    <Property Name="QuestionID" Type="bigint" />
+    <Property Name="Question" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AnswerID" Type="bigint" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="Value" Type="bit" />
+  </EntityType>
+  <EntityType Name="ExamOrder">
+    <Key>
+      <PropertyRef Name="ExamOrderID" />
+    </Key>
+    <Property Name="ExamOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreateDate" Type="date" />
+    <Property Name="UserID" Type="nchar" MaxLength="10" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="Disclaimer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instruction" Type="nvarchar" MaxLength="255" />
+    <Property Name="DurationInMinutes" Type="int" />
+    <Property Name="LanguageID" Type="nchar" MaxLength="2" />
+    <Property Name="NumberOfSortVersions" Type="int" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="ClassID" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamOrderItem">
+    <Key>
+      <PropertyRef Name="ExamOrderItemID" />
+    </Key>
+    <Property Name="ExamOrderItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+    <Property Name="NumberOfQuestions" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamOrderShuffleHeader">
+    <Key>
+      <PropertyRef Name="ExamOrderShuffleHeaderID" />
+    </Key>
+    <Property Name="ExamOrderShuffleHeaderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="ExamOrderShuffleID" Type="int" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="NumberOfQuestions" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamOrderShuffleLine">
+    <Key>
+      <PropertyRef Name="ExamOrderShuffleLineID" />
+    </Key>
+    <Property Name="ExamOrderShuffleLineID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+    <Property Name="QuestionID" Type="bigint" />
+    <Property Name="Question" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AnswerID" Type="bigint" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="ExamOrderShuffleID" Type="int" />
+    <Property Name="Value" Type="bit" />
+  </EntityType>
+  <EntityType Name="ExamOrderStatus">
+    <Key>
+      <PropertyRef Name="ExamOrderStatusID" />
+    </Key>
+    <Property Name="ExamOrderStatusID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ExamOrderStatusLog">
+    <Key>
+      <PropertyRef Name="ExamOrderStatusLogID" />
+    </Key>
+    <Property Name="ExamOrderStatusLogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="Date" Type="nchar" MaxLength="10" />
+    <Property Name="UserID" Type="nchar" MaxLength="10" />
+    <Property Name="ExamOrderStatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamStatus">
+    <Key>
+      <PropertyRef Name="ExamStatusID" />
+    </Key>
+    <Property Name="ExamStatusID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Institute">
+    <Key>
+      <PropertyRef Name="InstituteID" />
+    </Key>
+    <Property Name="InstituteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="LanguageID" />
+    </Key>
+    <Property Name="LanguageID" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="Language" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LevelOfEducationInternational">
+    <Key>
+      <PropertyRef Name="LevelOfEducationInternationalID" />
+    </Key>
+    <Property Name="LevelOfEducationInternationalID" Type="int" Nullable="false" />
+    <Property Name="ISCEDCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="LongDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LevelOfEducationLocal">
+    <Key>
+      <PropertyRef Name="LevelOfEductionLocal" />
+    </Key>
+    <Property Name="LevelOfEductionLocal" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nchar" MaxLength="10" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="LongDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreateDate" Type="date" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="LanguageID" Type="nchar" MaxLength="2" />
+    <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+    <Property Name="LevelOfEducationInternationalID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionToSubject">
+    <Key>
+      <PropertyRef Name="QuestionToSubjectID" />
+    </Key>
+    <Property Name="QuestionToSubjectID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionID" Type="bigint" />
+    <Property Name="SubjectID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionType">
+    <Key>
+      <PropertyRef Name="QuestionTypeID" />
+    </Key>
+    <Property Name="QuestionTypeID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Exams.dbo.vwCandidateExamHeader' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwCandidateExamHeader">
+    <Key>
+      <PropertyRef Name="ExamCandidateHeaderID" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="Expr4" />
+      <PropertyRef Name="ExamStatusID" />
+    </Key>
+    <Property Name="ExamCandidateHeaderID" Type="bigint" Nullable="false" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="SubmitDate" Type="date" />
+    <Property Name="EvaluationDate" Type="date" />
+    <Property Name="PointsScored" Type="int" />
+    <Property Name="CreateDate" Type="date" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="Expr2" Type="date" />
+    <Property Name="Expr3" Type="nchar" MaxLength="10" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="Disclaimer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instruction" Type="nvarchar" MaxLength="255" />
+    <Property Name="DurationInMinutes" Type="int" />
+    <Property Name="LanguageID" Type="nchar" MaxLength="2" />
+    <Property Name="NumberOfSortVersions" Type="int" />
+    <Property Name="DegreeOfDifficultyID" Type="int" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="ClassID" Type="int" />
+    <Property Name="Expr4" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="ExamStatusID" Type="int" Nullable="false" />
+    <Property Name="Expr5" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Exams.dbo.vwExamResult' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwExamResult">
+    <Key>
+      <PropertyRef Name="Score" />
+    </Key>
+    <Property Name="ClassID" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="DifficultyExam" Type="int" />
+    <Property Name="ExamOrderID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="QuestionTypeID" Type="int" />
+    <Property Name="Expr1" Type="nvarchar" MaxLength="50" />
+    <Property Name="QuestionID" Type="bigint" />
+    <Property Name="DifficultyQuestion" Type="int" />
+    <Property Name="Question" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Value correct" Type="bit" />
+    <Property Name="AnswersGiven" Type="int" />
+    <Property Name="Score" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AnswerToQuestion_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+    <End Role="AnswerToQuestion" Type="Self.AnswerToQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="AnswerToQuestion">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerToQuestion_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="AnswerToQuestion" Type="Self.AnswerToQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="AnswerToQuestion">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Institute">
+    <End Role="Institute" Type="Self.Institute" Multiplicity="0..1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institute">
+        <PropertyRef Name="InstituteID" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="InstituteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_LevelOfEducationInternational">
+    <End Role="LevelOfEducationInternational" Type="Self.LevelOfEducationInternational" Multiplicity="0..1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LevelOfEducationInternational">
+        <PropertyRef Name="LevelOfEducationInternationalID" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="LevelOfEducationInternationalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty">
+    <End Role="DegreeOfDifficulty" Type="Self.DegreeOfDifficulty" Multiplicity="0..1" />
+    <End Role="DegreeOfDifficultyToLevelOfEducation" Type="Self.DegreeOfDifficultyToLevelOfEducation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DegreeOfDifficulty">
+        <PropertyRef Name="DegreeOfDifficultyID" />
+      </Principal>
+      <Dependent Role="DegreeOfDifficultyToLevelOfEducation">
+        <PropertyRef Name="DegreeIDFrom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty1">
+    <End Role="DegreeOfDifficulty" Type="Self.DegreeOfDifficulty" Multiplicity="0..1" />
+    <End Role="DegreeOfDifficultyToLevelOfEducation" Type="Self.DegreeOfDifficultyToLevelOfEducation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DegreeOfDifficulty">
+        <PropertyRef Name="DegreeOfDifficultyID" />
+      </Principal>
+      <Dependent Role="DegreeOfDifficultyToLevelOfEducation">
+        <PropertyRef Name="DegreeIDTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DegreeOfDifficultyToLevelOfEducation_LevelOfEducation">
+    <End Role="LevelOfEducationInternational" Type="Self.LevelOfEducationInternational" Multiplicity="0..1" />
+    <End Role="DegreeOfDifficultyToLevelOfEducation" Type="Self.DegreeOfDifficultyToLevelOfEducation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LevelOfEducationInternational">
+        <PropertyRef Name="LevelOfEducationInternationalID" />
+      </Principal>
+      <Dependent Role="DegreeOfDifficultyToLevelOfEducation">
+        <PropertyRef Name="LevelOfEductionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCandidateHeader_Candidate">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ExamCandidateHeader" Type="Self.ExamCandidateHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ExamCandidateHeader">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCandidateHeader_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamCandidateHeader" Type="Self.ExamCandidateHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamCandidateHeader">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCandidateLine_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamCandidateLine" Type="Self.ExamCandidateLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamCandidateLine">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCandidateLine_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="ExamCandidateLine" Type="Self.ExamCandidateLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="ExamCandidateLine">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCandidateLine_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ExamCandidateLine" Type="Self.ExamCandidateLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ExamCandidateLine">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCompositionItem_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamOrderItem" Type="Self.ExamOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamOrderItem">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamCompositionItem_QuestionType">
+    <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+    <End Role="ExamOrderItem" Type="Self.ExamOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionType">
+        <PropertyRef Name="QuestionTypeID" />
+      </Principal>
+      <Dependent Role="ExamOrderItem">
+        <PropertyRef Name="QuestionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamDeliveryLine_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="ExamDeliveryLine" Type="Self.ExamDeliveryLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="ExamDeliveryLine">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamDeliveryLine_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamDeliveryLine" Type="Self.ExamDeliveryLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamDeliveryLine">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamDeliveryLine_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="ExamDeliveryLine" Type="Self.ExamDeliveryLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="ExamDeliveryLine">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrder_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="ExamOrder">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrder_DegreeOfDifficulty">
+    <End Role="DegreeOfDifficulty" Type="Self.DegreeOfDifficulty" Multiplicity="0..1" />
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DegreeOfDifficulty">
+        <PropertyRef Name="DegreeOfDifficultyID" />
+      </Principal>
+      <Dependent Role="ExamOrder">
+        <PropertyRef Name="DegreeOfDifficultyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrder_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="LanguageID" />
+      </Principal>
+      <Dependent Role="ExamOrder">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrder_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="ExamOrder">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrderShuffleHeader_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamOrderShuffleHeader" Type="Self.ExamOrderShuffleHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamOrderShuffleHeader">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrderShuffleLine_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="ExamOrderShuffleLine" Type="Self.ExamOrderShuffleLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="ExamOrderShuffleLine">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrderShuffleLine_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamOrderShuffleLine" Type="Self.ExamOrderShuffleLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamOrderShuffleLine">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrderShuffleLine_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="ExamOrderShuffleLine" Type="Self.ExamOrderShuffleLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="ExamOrderShuffleLine">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrderStatusLog_ExamOrder">
+    <End Role="ExamOrder" Type="Self.ExamOrder" Multiplicity="0..1" />
+    <End Role="ExamOrderStatusLog" Type="Self.ExamOrderStatusLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrder">
+        <PropertyRef Name="ExamOrderID" />
+      </Principal>
+      <Dependent Role="ExamOrderStatusLog">
+        <PropertyRef Name="ExamOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamOrderStatusLog_ExamOrderStatus">
+    <End Role="ExamOrderStatus" Type="Self.ExamOrderStatus" Multiplicity="0..1" />
+    <End Role="ExamOrderStatusLog" Type="Self.ExamOrderStatusLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamOrderStatus">
+        <PropertyRef Name="ExamOrderStatusID" />
+      </Principal>
+      <Dependent Role="ExamOrderStatusLog">
+        <PropertyRef Name="ExamOrderStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_DegreeOfDifficulty">
+    <End Role="DegreeOfDifficulty" Type="Self.DegreeOfDifficulty" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DegreeOfDifficulty">
+        <PropertyRef Name="DegreeOfDifficultyID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="DegreeOfDifficultyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="LanguageID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_LevelOfEducationInternational">
+    <End Role="LevelOfEducationInternational" Type="Self.LevelOfEducationInternational" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LevelOfEducationInternational">
+        <PropertyRef Name="LevelOfEducationInternationalID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="LevelOfEducationInternationalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_QuestionType">
+    <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionType">
+        <PropertyRef Name="QuestionTypeID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionToSubject_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="QuestionToSubject" Type="Self.QuestionToSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="QuestionToSubject">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="usp_AssignExamToCandidate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+    <Parameter Name="CandidateID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_CreateExamDeliveryFromShuffle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExamOrderID" Type="int" Mode="In" />
+    <Parameter Name="ShuffleID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_CreateExamShuffle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExamOrderID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ExamsModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnswerToQuestion" EntityType="Self.AnswerToQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DegreeOfDifficulty" EntityType="Self.DegreeOfDifficulty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DegreeOfDifficultyToLevel" EntityType="Self.DegreeOfDifficultyToLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DegreeOfDifficultyToLevelOfEducation" EntityType="Self.DegreeOfDifficultyToLevelOfEducation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EducationSystem" EntityType="Self.EducationSystem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamCandidateHeader" EntityType="Self.ExamCandidateHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamCandidateLine" EntityType="Self.ExamCandidateLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamCompositionLine" EntityType="Self.ExamCompositionLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamDeliveryHeader" EntityType="Self.ExamDeliveryHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamDeliveryLine" EntityType="Self.ExamDeliveryLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamOrder" EntityType="Self.ExamOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamOrderItem" EntityType="Self.ExamOrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamOrderShuffleHeader" EntityType="Self.ExamOrderShuffleHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamOrderShuffleLine" EntityType="Self.ExamOrderShuffleLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamOrderStatus" EntityType="Self.ExamOrderStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamOrderStatusLog" EntityType="Self.ExamOrderStatusLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamStatus" EntityType="Self.ExamStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Institute" EntityType="Self.Institute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LevelOfEducationInternational" EntityType="Self.LevelOfEducationInternational" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LevelOfEducationLocal" EntityType="Self.LevelOfEducationLocal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionToSubject" EntityType="Self.QuestionToSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwCandidateExamHeader" EntityType="Self.vwCandidateExamHeader" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwCandidateExamHeader].[ExamCandidateHeaderID] AS [ExamCandidateHeaderID], 
+    [vwCandidateExamHeader].[ExamOrderID] AS [ExamOrderID], 
+    [vwCandidateExamHeader].[UserID] AS [UserID], 
+    [vwCandidateExamHeader].[StatusID] AS [StatusID], 
+    [vwCandidateExamHeader].[SubmitDate] AS [SubmitDate], 
+    [vwCandidateExamHeader].[EvaluationDate] AS [EvaluationDate], 
+    [vwCandidateExamHeader].[PointsScored] AS [PointsScored], 
+    [vwCandidateExamHeader].[CreateDate] AS [CreateDate], 
+    [vwCandidateExamHeader].[Expr1] AS [Expr1], 
+    [vwCandidateExamHeader].[Expr2] AS [Expr2], 
+    [vwCandidateExamHeader].[Expr3] AS [Expr3], 
+    [vwCandidateExamHeader].[Title] AS [Title], 
+    [vwCandidateExamHeader].[SubTitle] AS [SubTitle], 
+    [vwCandidateExamHeader].[Disclaimer] AS [Disclaimer], 
+    [vwCandidateExamHeader].[Instruction] AS [Instruction], 
+    [vwCandidateExamHeader].[DurationInMinutes] AS [DurationInMinutes], 
+    [vwCandidateExamHeader].[LanguageID] AS [LanguageID], 
+    [vwCandidateExamHeader].[NumberOfSortVersions] AS [NumberOfSortVersions], 
+    [vwCandidateExamHeader].[DegreeOfDifficultyID] AS [DegreeOfDifficultyID], 
+    [vwCandidateExamHeader].[SubjectID] AS [SubjectID], 
+    [vwCandidateExamHeader].[ClassID] AS [ClassID], 
+    [vwCandidateExamHeader].[Expr4] AS [Expr4], 
+    [vwCandidateExamHeader].[Name] AS [Name], 
+    [vwCandidateExamHeader].[ExamStatusID] AS [ExamStatusID], 
+    [vwCandidateExamHeader].[Expr5] AS [Expr5]
+    FROM [dbo].[vwCandidateExamHeader] AS [vwCandidateExamHeader]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwExamResult" EntityType="Self.vwExamResult" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwExamResult].[ClassID] AS [ClassID], 
+    [vwExamResult].[Class] AS [Class], 
+    [vwExamResult].[UserID] AS [UserID], 
+    [vwExamResult].[FirstName] AS [FirstName], 
+    [vwExamResult].[LastName] AS [LastName], 
+    [vwExamResult].[Duration] AS [Duration], 
+    [vwExamResult].[DifficultyExam] AS [DifficultyExam], 
+    [vwExamResult].[ExamOrderID] AS [ExamOrderID], 
+    [vwExamResult].[Name] AS [Name], 
+    [vwExamResult].[QuestionTypeID] AS [QuestionTypeID], 
+    [vwExamResult].[Expr1] AS [Expr1], 
+    [vwExamResult].[QuestionID] AS [QuestionID], 
+    [vwExamResult].[DifficultyQuestion] AS [DifficultyQuestion], 
+    [vwExamResult].[Question] AS [Question], 
+    [vwExamResult].[Answer] AS [Answer], 
+    [vwExamResult].[Value correct] AS [Value correct], 
+    [vwExamResult].[AnswersGiven] AS [AnswersGiven], 
+    [vwExamResult].[Score] AS [Score]
+    FROM [dbo].[vwExamResult] AS [vwExamResult]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AnswerToQuestion_Answer" Association="Self.FK_AnswerToQuestion_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="AnswerToQuestion" EntitySet="AnswerToQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerToQuestion_Question" Association="Self.FK_AnswerToQuestion_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="AnswerToQuestion" EntitySet="AnswerToQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Institute" Association="Self.FK_Class_Institute">
+      <End Role="Institute" EntitySet="Institute" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_LevelOfEducationInternational" Association="Self.FK_Class_LevelOfEducationInternational">
+      <End Role="LevelOfEducationInternational" EntitySet="LevelOfEducationInternational" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty" Association="Self.FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty">
+      <End Role="DegreeOfDifficulty" EntitySet="DegreeOfDifficulty" />
+      <End Role="DegreeOfDifficultyToLevelOfEducation" EntitySet="DegreeOfDifficultyToLevelOfEducation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty1" Association="Self.FK_DegreeOfDifficultyToLevelOfEducation_DegreeOfDifficulty1">
+      <End Role="DegreeOfDifficulty" EntitySet="DegreeOfDifficulty" />
+      <End Role="DegreeOfDifficultyToLevelOfEducation" EntitySet="DegreeOfDifficultyToLevelOfEducation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DegreeOfDifficultyToLevelOfEducation_LevelOfEducation" Association="Self.FK_DegreeOfDifficultyToLevelOfEducation_LevelOfEducation">
+      <End Role="LevelOfEducationInternational" EntitySet="LevelOfEducationInternational" />
+      <End Role="DegreeOfDifficultyToLevelOfEducation" EntitySet="DegreeOfDifficultyToLevelOfEducation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCandidateHeader_Candidate" Association="Self.FK_ExamCandidateHeader_Candidate">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExamCandidateHeader" EntitySet="ExamCandidateHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCandidateHeader_ExamOrder" Association="Self.FK_ExamCandidateHeader_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamCandidateHeader" EntitySet="ExamCandidateHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCandidateLine_ExamOrder" Association="Self.FK_ExamCandidateLine_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamCandidateLine" EntitySet="ExamCandidateLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCandidateLine_Question" Association="Self.FK_ExamCandidateLine_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="ExamCandidateLine" EntitySet="ExamCandidateLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCandidateLine_User" Association="Self.FK_ExamCandidateLine_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExamCandidateLine" EntitySet="ExamCandidateLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCompositionItem_ExamOrder" Association="Self.FK_ExamCompositionItem_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamOrderItem" EntitySet="ExamOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamCompositionItem_QuestionType" Association="Self.FK_ExamCompositionItem_QuestionType">
+      <End Role="QuestionType" EntitySet="QuestionType" />
+      <End Role="ExamOrderItem" EntitySet="ExamOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamDeliveryLine_Answer" Association="Self.FK_ExamDeliveryLine_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="ExamDeliveryLine" EntitySet="ExamDeliveryLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamDeliveryLine_ExamOrder" Association="Self.FK_ExamDeliveryLine_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamDeliveryLine" EntitySet="ExamDeliveryLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamDeliveryLine_Question" Association="Self.FK_ExamDeliveryLine_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="ExamDeliveryLine" EntitySet="ExamDeliveryLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrder_Class" Association="Self.FK_ExamOrder_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrder_DegreeOfDifficulty" Association="Self.FK_ExamOrder_DegreeOfDifficulty">
+      <End Role="DegreeOfDifficulty" EntitySet="DegreeOfDifficulty" />
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrder_Language" Association="Self.FK_ExamOrder_Language">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrder_Subject" Association="Self.FK_ExamOrder_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrderShuffleHeader_ExamOrder" Association="Self.FK_ExamOrderShuffleHeader_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamOrderShuffleHeader" EntitySet="ExamOrderShuffleHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrderShuffleLine_Answer" Association="Self.FK_ExamOrderShuffleLine_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="ExamOrderShuffleLine" EntitySet="ExamOrderShuffleLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrderShuffleLine_ExamOrder" Association="Self.FK_ExamOrderShuffleLine_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamOrderShuffleLine" EntitySet="ExamOrderShuffleLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrderShuffleLine_Question" Association="Self.FK_ExamOrderShuffleLine_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="ExamOrderShuffleLine" EntitySet="ExamOrderShuffleLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrderStatusLog_ExamOrder" Association="Self.FK_ExamOrderStatusLog_ExamOrder">
+      <End Role="ExamOrder" EntitySet="ExamOrder" />
+      <End Role="ExamOrderStatusLog" EntitySet="ExamOrderStatusLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamOrderStatusLog_ExamOrderStatus" Association="Self.FK_ExamOrderStatusLog_ExamOrderStatus">
+      <End Role="ExamOrderStatus" EntitySet="ExamOrderStatus" />
+      <End Role="ExamOrderStatusLog" EntitySet="ExamOrderStatusLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_DegreeOfDifficulty" Association="Self.FK_Question_DegreeOfDifficulty">
+      <End Role="DegreeOfDifficulty" EntitySet="DegreeOfDifficulty" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Language" Association="Self.FK_Question_Language">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_LevelOfEducationInternational" Association="Self.FK_Question_LevelOfEducationInternational">
+      <End Role="LevelOfEducationInternational" EntitySet="LevelOfEducationInternational" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_QuestionType" Association="Self.FK_Question_QuestionType">
+      <End Role="QuestionType" EntitySet="QuestionType" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Subject" Association="Self.FK_Question_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionToSubject_Subject" Association="Self.FK_QuestionToSubject_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="QuestionToSubject" EntitySet="QuestionToSubject" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
