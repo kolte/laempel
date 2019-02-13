@@ -1,0 +1,69 @@
+﻿@model ExamsGenerator.Models.Question
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeOfDifficulty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DegreeOfDifficulty.DegreeOfDifficultyId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Language.LanguageId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelOfEducationInternational)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LevelOfEducationInternational.LevelOfEducationInternationalId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuestionType.QuestionTypeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject.SubjectId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="QuestionId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

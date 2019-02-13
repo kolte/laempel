@@ -9,5 +9,5 @@
 /ExamsGenerator/ExamsGenerator/ApplicationInsights.config
 /ExamsGenerator/ExamsGenerator/ExamsGenerator.csproj.user
 /Core/ExamsGenerator/.vs
-/Core/ExamsGenerator/ExamsGenerator/bin/Debug/netcoreapp2.0
-/Core/ExamsGenerator/ExamsGenerator/obj
+/Core/ExamsGenerator/ExamsGenerator/bin/*
+/Core/ExamsGenerator/ExamsGenerator/obj/*

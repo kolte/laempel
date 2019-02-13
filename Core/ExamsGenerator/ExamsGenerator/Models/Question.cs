@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExamsGenerator.Models
 {
@@ -14,23 +16,43 @@ namespace ExamsGenerator.Models
         }
 
         public long QuestionId { get; set; }
+
         public DateTime? CreateDate { get; set; }
+
+        [Display(Name = "Author")]
         public int? UserId { get; set; }
+
         public string LanguageId { get; set; }
+
         public string Text { get; set; }
+
         public int? SubjectId { get; set; }
+
         public int? DegreeOfDifficultyId { get; set; }
+
         public int? QuestionTypeId { get; set; }
+
         public int? LevelOfEducationInternationalId { get; set; }
 
+        [Display(Name = "Difficulty")]
         public DegreeOfDifficulty DegreeOfDifficulty { get; set; }
+
         public Language Language { get; set; }
+
+        [Display(Name = "Education Level")]
         public LevelOfEducationInternational LevelOfEducationInternational { get; set; }
+
+        [Display(Name = "Type")]
         public QuestionType QuestionType { get; set; }
+
         public Subject Subject { get; set; }
+
         public ICollection<AnswerToQuestion> AnswerToQuestion { get; set; }
+
         public ICollection<ExamCandidateLine> ExamCandidateLine { get; set; }
+
         public ICollection<ExamDeliveryLine> ExamDeliveryLine { get; set; }
+
         public ICollection<ExamOrderShuffleLine> ExamOrderShuffleLine { get; set; }
     }
 }

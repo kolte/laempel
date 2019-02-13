@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ExamsGenerator.Models.Question>
+
+@{
+    ViewData["Title"] = "Questions";
+}
+
+<h2>Questions</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DegreeOfDifficulty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelOfEducationInternational)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DegreeOfDifficulty.DegreeOfDifficultyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.Language1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelOfEducationInternational.Iscedcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.QuestionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.QuestionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.QuestionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

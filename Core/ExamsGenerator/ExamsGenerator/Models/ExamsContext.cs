@@ -6,6 +6,11 @@ namespace ExamsGenerator.Models
 {
     public partial class ExamsContext : DbContext
     {
+        public ExamsContext(DbContextOptions<ExamsContext> options)
+            : base(options)
+        {
+        }
+
         public virtual DbSet<Answer> Answer { get; set; }
         public virtual DbSet<AnswerToQuestion> AnswerToQuestion { get; set; }
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }

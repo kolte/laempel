@@ -29,6 +29,9 @@ namespace ExamsGenerator
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDbContext<ExamsContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Add Identity Service
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
