@@ -1,0 +1,57 @@
+﻿@model ExamsGenerator.Models.ExamOrder
+
+@{
+    ViewData["Title"] = "Create exam order";
+}
+
+<h2>Create exam order</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubTitle" class="control-label">Subtitle</label>
+                <input asp-for="SubTitle" class="form-control" />
+                <span asp-validation-for="SubTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationInMinutes" class="control-label">Duration in minutes</label>
+                <input asp-for="DurationInMinutes" class="form-control" />
+                <span asp-validation-for="DurationInMinutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DegreeOfDifficultyId" class="control-label">Desired degree of difficulty</label>
+                <select asp-for="DegreeOfDifficultyId" class="form-control" asp-items="ViewBag.DegreeOfDifficultyId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassId" class="control-label">Class</label>
+                <select asp-for="DegreeOfDifficultyId" class="form-control" asp-items="ViewBag.ClassId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubjectId" class="control-label">Subject</label>
+                <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Disclaimer" class="control-label">Disclaimer</label>
+                <input asp-for="Disclaimer" class="form-control" />
+                <span asp-validation-for="Disclaimer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Instruction" class="control-label">Instruction</label>
+                <input asp-for="Instruction" class="form-control" />
+                <span asp-validation-for="Instruction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -100,16 +100,6 @@ namespace ExamsGenerator.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["DegreeOfDifficultyId"] = new SelectList(_context.DegreeOfDifficulty, "DegreeOfDifficultyId", 
-                "DegreeOfDifficultyId", question.DegreeOfDifficultyId);
-            ViewData["LanguageId"] = new SelectList(_context.Language, "LanguageId", "LanguageId", question.LanguageId);
-            ViewData["LevelOfEducationInternationalId"] = new SelectList(_context.LevelOfEducationInternational, 
-                "LevelOfEducationInternationalId", "LevelOfEducationInternationalId", question.LevelOfEducationInternationalId);
-            ViewData["QuestionTypeId"] = new SelectList(_context.QuestionType, "QuestionTypeId", "QuestionTypeId", question.QuestionTypeId);
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "SubjectId", "SubjectId", question.SubjectId);
-            ViewData["Date"] = DateTime.Now;
-
-
             return View(question);
         }
 
