@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-ExamsGenerator-D73352C2-1F3C-4E7A-97EB-723CE22BD8B3</UserSecretsId>
   </PropertyGroup>
 
