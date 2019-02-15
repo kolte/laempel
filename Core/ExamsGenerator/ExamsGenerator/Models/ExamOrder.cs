@@ -30,16 +30,16 @@ namespace ExamsGenerator.Models
         public int? SubjectId { get; set; }
         public int? ClassId { get; set; }
 
-        public Class Class { get; set; }
-        public DegreeOfDifficulty DegreeOfDifficulty { get; set; }
-        public Language Language { get; set; }
-        public Subject Subject { get; set; }
-        public ICollection<ExamCandidateHeader> ExamCandidateHeader { get; set; }
-        public ICollection<ExamCandidateLine> ExamCandidateLine { get; set; }
-        public ICollection<ExamDeliveryLine> ExamDeliveryLine { get; set; }
-        public ICollection<ExamOrderItem> ExamOrderItem { get; set; }
-        public ICollection<ExamOrderShuffleHeader> ExamOrderShuffleHeader { get; set; }
-        public ICollection<ExamOrderShuffleLine> ExamOrderShuffleLine { get; set; }
-        public ICollection<ExamOrderStatusLog> ExamOrderStatusLog { get; set; }
+        public virtual Class Class { get; set; }
+        public virtual DegreeOfDifficulty DegreeOfDifficulty { get; set; }
+        public virtual Language Language { get; set; }
+        public virtual Subject Subject { get; set; }
+        public virtual ICollection<ExamCandidateHeader> ExamCandidateHeader { get; set; }
+        public virtual ICollection<ExamCandidateLine> ExamCandidateLine { get; set; }
+        public virtual ICollection<ExamDeliveryLine> ExamDeliveryLine { get; set; }
+        public virtual ICollection<ExamOrderItem> ExamOrderItem { get; set; }
+        public virtual ICollection<ExamOrderShuffleHeader> ExamOrderShuffleHeader { get; set; }
+        public virtual ICollection<ExamOrderShuffleLine> ExamOrderShuffleLine { get; set; }
+        public virtual ICollection<ExamOrderStatusLog> ExamOrderStatusLog { get; set; }
     }
 }

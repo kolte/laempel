@@ -10,7 +10,7 @@ namespace ExamsGenerator.Models
         public int? QuestionTypeId { get; set; }
         public int? NumberOfQuestions { get; set; }
 
-        public ExamOrder ExamOrder { get; set; }
-        public QuestionType QuestionType { get; set; }
+        public virtual ExamOrder ExamOrder { get; set; }
+        public virtual QuestionType QuestionType { get; set; }
     }
 }

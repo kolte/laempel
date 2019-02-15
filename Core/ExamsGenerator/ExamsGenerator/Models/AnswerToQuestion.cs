@@ -10,7 +10,7 @@ namespace ExamsGenerator.Models
         public long QuestionId { get; set; }
         public bool Value { get; set; }
 
-        public Answer Answer { get; set; }
-        public Question Question { get; set; }
+        public virtual Answer Answer { get; set; }
+        public virtual Question Question { get; set; }
     }
 }

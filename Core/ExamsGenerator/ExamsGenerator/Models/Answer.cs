@@ -17,8 +17,8 @@ namespace ExamsGenerator.Models
         public int? UserId { get; set; }
         public string LanguageId { get; set; }
 
-        public ICollection<AnswerToQuestion> AnswerToQuestion { get; set; }
-        public ICollection<ExamDeliveryLine> ExamDeliveryLine { get; set; }
-        public ICollection<ExamOrderShuffleLine> ExamOrderShuffleLine { get; set; }
+        public virtual ICollection<AnswerToQuestion> AnswerToQuestion { get; set; }
+        public virtual ICollection<ExamDeliveryLine> ExamDeliveryLine { get; set; }
+        public virtual ICollection<ExamOrderShuffleLine> ExamOrderShuffleLine { get; set; }
     }
 }

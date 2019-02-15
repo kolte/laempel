@@ -11,6 +11,6 @@ namespace ExamsGenerator.Models
         public int? DegreeOfDifficultyId { get; set; }
         public int? NumberOfQuestions { get; set; }
 
-        public ExamOrder ExamOrder { get; set; }
+        public virtual ExamOrder ExamOrder { get; set; }
     }
 }

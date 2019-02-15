@@ -15,8 +15,8 @@ namespace ExamsGenerator.Models
         public int SubjectId { get; set; }
         public string Name { get; set; }
 
-        public ICollection<ExamOrder> ExamOrder { get; set; }
-        public ICollection<Question> Question { get; set; }
-        public ICollection<QuestionToSubject> QuestionToSubject { get; set; }
+        public virtual ICollection<ExamOrder> ExamOrder { get; set; }
+        public virtual ICollection<Question> Question { get; set; }
+        public virtual ICollection<QuestionToSubject> QuestionToSubject { get; set; }
     }
 }

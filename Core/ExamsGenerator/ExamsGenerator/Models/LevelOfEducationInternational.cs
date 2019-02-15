@@ -17,8 +17,8 @@ namespace ExamsGenerator.Models
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
 
-        public ICollection<Class> Class { get; set; }
-        public ICollection<DegreeOfDifficultyToLevelOfEducation> DegreeOfDifficultyToLevelOfEducation { get; set; }
-        public ICollection<Question> Question { get; set; }
+        public virtual ICollection<Class> Class { get; set; }
+        public virtual ICollection<DegreeOfDifficultyToLevelOfEducation> DegreeOfDifficultyToLevelOfEducation { get; set; }
+        public virtual ICollection<Question> Question { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace ExamsGenerator.Models
         public int? PointsScored { get; set; }
         public DateTime? CreateDate { get; set; }
 
-        public ExamOrder ExamOrder { get; set; }
-        public User User { get; set; }
+        public virtual ExamOrder ExamOrder { get; set; }
+        public virtual User User { get; set; }
     }
 }

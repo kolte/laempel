@@ -14,7 +14,7 @@ namespace ExamsGenerator.Models
         public string LanguageId { get; set; }
         public string Language1 { get; set; }
 
-        public ICollection<ExamOrder> ExamOrder { get; set; }
-        public ICollection<Question> Question { get; set; }
+        public virtual ICollection<ExamOrder> ExamOrder { get; set; }
+        public virtual ICollection<Question> Question { get; set; }
     }
 }

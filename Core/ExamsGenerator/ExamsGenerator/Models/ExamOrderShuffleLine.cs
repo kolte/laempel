@@ -16,8 +16,8 @@ namespace ExamsGenerator.Models
         public int? ExamOrderShuffleId { get; set; }
         public bool? Value { get; set; }
 
-        public Answer AnswerNavigation { get; set; }
-        public ExamOrder ExamOrder { get; set; }
-        public Question QuestionNavigation { get; set; }
+        public virtual Answer AnswerNavigation { get; set; }
+        public virtual ExamOrder ExamOrder { get; set; }
+        public virtual Question QuestionNavigation { get; set; }
     }
 }

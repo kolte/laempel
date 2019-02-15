@@ -14,6 +14,6 @@ namespace ExamsGenerator.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<Class> Class { get; set; }
+        public virtual ICollection<Class> Class { get; set; }
     }
 }

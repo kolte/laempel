@@ -6,6 +6,10 @@ namespace ExamsGenerator.Models
 {
     public partial class ExamsContext : DbContext
     {
+        public ExamsContext()
+        {
+        }
+
         public ExamsContext(DbContextOptions<ExamsContext> options)
             : base(options)
         {
@@ -18,8 +22,8 @@ namespace ExamsGenerator.Models
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<DegreeOfDifficulty> DegreeOfDifficulty { get; set; }
         public virtual DbSet<DegreeOfDifficultyToLevel> DegreeOfDifficultyToLevel { get; set; }
@@ -52,14 +56,15 @@ namespace ExamsGenerator.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // TODO: move this to appsetings.json
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13;Database=Exams;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13;Database=Exams;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
+
             modelBuilder.Entity<Answer>(entity =>
             {
                 entity.Property(e => e.AnswerId).HasColumnName("AnswerID");
@@ -159,6 +164,11 @@ namespace ExamsGenerator.Models
                     .HasForeignKey(d => d.UserId);
             });
 
+            modelBuilder.Entity<AspNetUserTokens>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
+            });
+
             modelBuilder.Entity<AspNetUsers>(entity =>
             {
                 entity.HasIndex(e => e.NormalizedEmail)
@@ -177,11 +187,6 @@ namespace ExamsGenerator.Models
                 entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
 
                 entity.Property(e => e.UserName).HasMaxLength(256);
-            });
-
-            modelBuilder.Entity<AspNetUserTokens>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
             });
 
             modelBuilder.Entity<Class>(entity =>
@@ -293,7 +298,8 @@ namespace ExamsGenerator.Models
 
             modelBuilder.Entity<ExamCandidateLine>(entity =>
             {
-                entity.HasKey(e => e.ExamCanditateLineId);
+                entity.HasKey(e => e.ExamCanditateLineId)
+                    .HasName("PK_ExamCandiateLine");
 
                 entity.Property(e => e.ExamCanditateLineId).HasColumnName("ExamCanditateLineID");
 
@@ -589,7 +595,8 @@ namespace ExamsGenerator.Models
 
             modelBuilder.Entity<LevelOfEducationLocal>(entity =>
             {
-                entity.HasKey(e => e.LevelOfEductionLocal);
+                entity.HasKey(e => e.LevelOfEductionLocal)
+                    .HasName("PK_LevelOfEductionLocal");
 
                 entity.Property(e => e.LevelOfEductionLocal).ValueGeneratedNever();
 
@@ -601,6 +608,8 @@ namespace ExamsGenerator.Models
             modelBuilder.Entity<Question>(entity =>
             {
                 entity.Property(e => e.QuestionId).HasColumnName("QuestionID");
+
+                entity.Property(e => e.Author).HasMaxLength(450);
 
                 entity.Property(e => e.CreateDate).HasColumnType("date");
 
@@ -619,6 +628,12 @@ namespace ExamsGenerator.Models
                 entity.Property(e => e.Text).HasMaxLength(1000);
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.HasOne(d => d.AuthorNavigation)
+                    .WithMany(p => p.Question)
+                    .HasForeignKey(d => d.Author)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Question_AspNetUser");
 
                 entity.HasOne(d => d.DegreeOfDifficulty)
                     .WithMany(p => p.Question)

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ExamsGenerator.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ExamsGenerator.Controllers
 {
@@ -14,10 +15,12 @@ namespace ExamsGenerator.Controllers
     public class QuestionController : Controller
     {
         private readonly ExamsContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public QuestionController(ExamsContext context)
+        public QuestionController(ExamsContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // Get questions
@@ -28,7 +31,8 @@ namespace ExamsGenerator.Controllers
                 .Include(q => q.Language)
                 .Include(q => q.LevelOfEducationInternational)
                 .Include(q => q.QuestionType)
-                .Include(q => q.Subject);
+                .Include(q => q.Subject)
+                .Include(q => q.AuthorNavigation);
 
             return View(await questions.ToListAsync());
         }
@@ -74,9 +78,21 @@ namespace ExamsGenerator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QuestionId,CreateDate,UserId,LanguageId,Text,SubjectId,DegreeOfDifficultyId," +
+        public async Task<IActionResult> Create([Bind("QuestionId,LanguageId,Text,SubjectId,DegreeOfDifficultyId," +
             "QuestionTypeId,LevelOfEducationInternationalId")] Question question)
         {
+            question.CreateDate = DateTime.UtcNow;
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+
+            AspNetUsers aspUser = _context.AspNetUsers.Where(u => u.Email.Equals(user.Email)).FirstOrDefault();
+            question.AuthorNavigation = aspUser;
+
             if (ModelState.IsValid)
             {
                 _context.Add(question);
@@ -91,6 +107,9 @@ namespace ExamsGenerator.Controllers
                 "LevelOfEducationInternationalId", "LevelOfEducationInternationalId", question.LevelOfEducationInternationalId);
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionType, "QuestionTypeId", "QuestionTypeId", question.QuestionTypeId);
             ViewData["SubjectId"] = new SelectList(_context.Subject, "SubjectId", "SubjectId", question.SubjectId);
+            ViewData["Date"] = DateTime.Now;
+
+
             return View(question);
         }
 

@@ -1,5 +1,7 @@
 ﻿@model ExamsGenerator.Models.Question
 
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Create question";
 }
@@ -12,14 +14,8 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CreateDate" class="control-label">Date</label>
-                <input asp-for="CreateDate" class="form-control" />
-                <span asp-validation-for="CreateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label">Author</label>
-                <input asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
+                <label asp-for="Author" class="control-label">Author: </label>
+                <label asp-for="Author" class="control-label"> @UserManager.GetUserName(User)</label>
             </div>
             <div class="form-group">
                 <label asp-for="SubjectId" class="control-label">Subject</label>

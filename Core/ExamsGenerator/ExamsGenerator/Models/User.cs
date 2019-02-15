@@ -16,7 +16,7 @@ namespace ExamsGenerator.Models
         public string LastName { get; set; }
         public int? RoleId { get; set; }
 
-        public ICollection<ExamCandidateHeader> ExamCandidateHeader { get; set; }
-        public ICollection<ExamCandidateLine> ExamCandidateLine { get; set; }
+        public virtual ICollection<ExamCandidateHeader> ExamCandidateHeader { get; set; }
+        public virtual ICollection<ExamCandidateLine> ExamCandidateLine { get; set; }
     }
 }

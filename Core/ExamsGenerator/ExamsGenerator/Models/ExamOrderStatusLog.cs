@@ -11,7 +11,7 @@ namespace ExamsGenerator.Models
         public string UserId { get; set; }
         public int? ExamOrderStatusId { get; set; }
 
-        public ExamOrder ExamOrder { get; set; }
-        public ExamOrderStatus ExamOrderStatus { get; set; }
+        public virtual ExamOrder ExamOrder { get; set; }
+        public virtual ExamOrderStatus ExamOrderStatus { get; set; }
     }
 }

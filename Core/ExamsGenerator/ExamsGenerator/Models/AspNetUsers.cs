@@ -10,6 +10,7 @@ namespace ExamsGenerator.Models
             AspNetUserClaims = new HashSet<AspNetUserClaims>();
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetUserRoles = new HashSet<AspNetUserRoles>();
+            Question = new HashSet<Question>();
         }
 
         public string Id { get; set; }
@@ -28,8 +29,9 @@ namespace ExamsGenerator.Models
         public bool TwoFactorEnabled { get; set; }
         public string UserName { get; set; }
 
-        public ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual ICollection<Question> Question { get; set; }
     }
 }

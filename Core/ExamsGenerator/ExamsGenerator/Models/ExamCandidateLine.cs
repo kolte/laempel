@@ -12,8 +12,8 @@ namespace ExamsGenerator.Models
         public long? AnswerId { get; set; }
         public bool? Value { get; set; }
 
-        public ExamOrder ExamOrder { get; set; }
-        public Question Question { get; set; }
-        public User User { get; set; }
+        public virtual ExamOrder ExamOrder { get; set; }
+        public virtual Question Question { get; set; }
+        public virtual User User { get; set; }
     }
 }

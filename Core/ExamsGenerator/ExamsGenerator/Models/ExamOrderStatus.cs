@@ -13,6 +13,6 @@ namespace ExamsGenerator.Models
         public int ExamOrderStatusId { get; set; }
         public string Name { get; set; }
 
-        public ICollection<ExamOrderStatusLog> ExamOrderStatusLog { get; set; }
+        public virtual ICollection<ExamOrderStatusLog> ExamOrderStatusLog { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace ExamsGenerator.Models
         public int? InstituteId { get; set; }
         public int? LevelOfEducationInternationalId { get; set; }
 
-        public Institute Institute { get; set; }
-        public LevelOfEducationInternational LevelOfEducationInternational { get; set; }
-        public ICollection<ExamOrder> ExamOrder { get; set; }
+        public virtual Institute Institute { get; set; }
+        public virtual LevelOfEducationInternational LevelOfEducationInternational { get; set; }
+        public virtual ICollection<ExamOrder> ExamOrder { get; set; }
     }
 }

@@ -10,8 +10,8 @@ namespace ExamsGenerator.Models
         public int? DegreeIdto { get; set; }
         public int? LevelOfEductionId { get; set; }
 
-        public DegreeOfDifficulty DegreeIdfromNavigation { get; set; }
-        public DegreeOfDifficulty DegreeIdtoNavigation { get; set; }
-        public LevelOfEducationInternational LevelOfEduction { get; set; }
+        public virtual DegreeOfDifficulty DegreeIdfromNavigation { get; set; }
+        public virtual DegreeOfDifficulty DegreeIdtoNavigation { get; set; }
+        public virtual LevelOfEducationInternational LevelOfEduction { get; set; }
     }
 }
