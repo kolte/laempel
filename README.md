@@ -1,2 +1,3 @@
 # laempel
 Exam generator
+yes
